@@ -1,6 +1,6 @@
 package snakegame.Model;
 
-public class Object {
+public class Item {
     private String type;
 
     public String getType() {
@@ -11,7 +11,7 @@ public class Object {
         this.type = type;
     }
 
-    public Object(String type) {
+    public Item(String type) {
         this.type = type;
     }
     

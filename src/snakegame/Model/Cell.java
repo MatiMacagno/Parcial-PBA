@@ -3,7 +3,7 @@ import snakegame.Entities.Personage;
 
 public class Cell {
     private Personage personage;
-    private Object object;
+    private Item object;
 
     public Personage getPersonage() {
         return personage;
@@ -13,18 +13,18 @@ public class Cell {
         this.personage = personage;
     }
     
-    public Object getObject() {
+    public Item getObject() {
         return object;
     }
 
-    public void setObject(Object object) {
+    public void setObject(Item object) {
         this.object = object;
     }
     
     public Cell() {
     }
 
-    public Cell(Object object) {
+    public Cell(Item object) {
         this.object = object;
     }
 

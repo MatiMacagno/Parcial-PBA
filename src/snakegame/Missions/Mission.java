@@ -1,13 +1,47 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package snakegame.Missions;
 
-/**
- *
- * @author ddi3
- */
 public abstract class Mission {
+    protected String name;
+    protected boolean missionCompleted;
+    protected boolean missionUnlocked; 
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isMissionCompleted() {
+        return missionCompleted;
+    }
+
+    public void setMissionCompleted(boolean missionCompleted) {
+        this.missionCompleted = missionCompleted;
+    }
+
+    public boolean isMissionUnlocked() {
+        return missionUnlocked;
+    }
+
+    public void setMissionUnlocked() {
+        this.missionUnlocked = true;
+    }
+
+    public Mission(String name) {
+        this.name = name;
+        this.missionCompleted = false;
+        this.missionUnlocked = false;
+    }
     
+    public abstract void start();
+    
+    public abstract boolean verifiedMissionCompleted();
+
+    @Override
+    public String toString() {
+        return "Mission{" + "name=" + name + ", missionCompleted=" + missionCompleted + ", missionUnlocked=" + missionUnlocked + '}';
+    }
+     
 }
