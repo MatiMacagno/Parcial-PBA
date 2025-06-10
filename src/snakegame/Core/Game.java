@@ -19,7 +19,7 @@ public class Game {
     // Inicialmente 0 misiones completadas
     private void initialize() {
         completedMisions = 0;  
-        currentMission = 0;
+        currentMission = 1;
         completedGame = false;
         progressCode = "";
         createMissions();
