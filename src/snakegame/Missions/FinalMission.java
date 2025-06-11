@@ -3,7 +3,7 @@ package snakegame.Missions;
 public class FinalMission extends Mission{
     
     private boolean metalGearDefeat;
-    private boolean allMissionsCompleted;
+    private boolean allPreviousMissionsCompleted;
 
     public boolean isMetalGearDefeat() {
         return metalGearDefeat;
@@ -13,27 +13,37 @@ public class FinalMission extends Mission{
         this.metalGearDefeat = true;
     }
 
-    public boolean isAllMissionsCompleted() {
-        return allMissionsCompleted;
+    public boolean isAllPreviousMissionsCompleted() {
+        return allPreviousMissionsCompleted;
     }
 
-    public void setAllMissionsCompleted(boolean allMissionsCompleted) {
-        this.allMissionsCompleted = allMissionsCompleted;
+    public void setAllPreviousMissionsCompleted(boolean allPreviousMissionsCompleted) {
+        this.allPreviousMissionsCompleted = allPreviousMissionsCompleted;
     }
 
     public FinalMission(String name) {
         super(name);
         this.metalGearDefeat = false;
-        this.allMissionsCompleted = false;
+        this.allPreviousMissionsCompleted = false;
     }
 
     @Override
     public void start() {
-        if (!allMissionsCompleted){
+        if (!allPreviousMissionsCompleted){
             System.out.println("No puedes iniciar la misión final " + name + " porque no haz completado todas las misiones anteriores.");
+            return;
         }
-        setMissionUnlocked();
         System.out.println("Iniciando misión final " + name + ".");
+        setMissionUnlocked();
+    }
+    
+    @Override
+    public boolean startMission() {
+        if (!allPreviousMissionsCompleted) {
+            System.out.println("No puedes iniciar la misión final " + name + " porque no haz completado todas las misiones anteriores.");
+            return false;
+        }
+        return super.startMission();
     }
 
     @Override

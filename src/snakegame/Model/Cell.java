@@ -31,5 +31,16 @@ public class Cell {
     public Cell(Personage personage) {
         this.personage = personage;
     }
+    
+    public boolean isEmpty() {
+        return personage == null;
+    }
   
+    public boolean hasPersonage() {
+        return personage != null;
+    }
+    
+    public boolean hasObject() {
+        return object != null;
+    }
 }

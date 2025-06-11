@@ -36,8 +36,18 @@ public abstract class Mission {
     }
     
     public abstract void start();
-    
+   
     public abstract boolean verifiedMissionCompleted();
+    
+    public boolean startMission() {
+        if (!missionUnlocked) {
+            System.out.println("La misión " + name + " no está desbloqueada aún.");
+            return false;
+        }
+        
+        start();
+        return true;
+    }
 
     @Override
     public String toString() {

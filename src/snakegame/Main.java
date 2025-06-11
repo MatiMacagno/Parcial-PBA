@@ -1,11 +1,11 @@
 package snakegame;
-import snakegame.Core.Map;
+import snakegame.Core.Game;
 
 public class Main {
 
     public static void main(String[] args) {
-        Map map = new Map(6, 6);
-        map.showMap();
+        Game game = new Game();
+        game.startGame();
     }
     
 }
