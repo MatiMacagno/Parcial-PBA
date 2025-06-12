@@ -10,12 +10,22 @@ public class Map {
     private final Cell[][] grid;
     private final int width;
     private final int height;
-
-    public Map(int width, int height) {
+    private final int missionNumber; 
+    
+    public Map(int width, int height, int missionNumber) {
         this.width = width;
         this.height = height;
+        this.missionNumber = missionNumber;
         this.grid = new Cell[height][width];
         initializeGrid();
+    }
+    
+    public Cell[][] getGrid() {
+        return grid;
+    }
+    
+    public int getMissionNumber() {
+        return missionNumber;
     }
     
     private void initializeGrid() {
@@ -94,7 +104,7 @@ public class Map {
         
         // Verificar si Snake ha sido capturado después del movimiento
         if (personage.getName().equals("Snake")) {
-            if (hasEnemyAt(newPosition)) {
+            if (isSnakeCaptured((Snake) personage)) {
                 System.out.println("¡Snake ha sido capturado! Debe comenzar nuevamente.");
                 return false;
             }
@@ -150,7 +160,8 @@ public class Map {
             // Contenido de la fila
             System.out.print("|");
             for (int j = 0; j < width; j++) {
-                System.out.print(" |");
+                char symbol = getCellSymbol(i, j);
+                System.out.print(symbol + "|");
             }
             System.out.println();
 
@@ -161,6 +172,42 @@ public class Map {
             }
             System.out.println();
         }
+    }
+    
+    private char getCellSymbol(int row, int col) {
+        Cell cell = grid[row][col];
+
+        if (cell.hasPersonage()) {
+            Personage personage = cell.getPersonage();
+
+            if (personage.getName().equals("Snake")) {
+                return 'S';
+            }
+            
+            else if (personage.getName().equals("Guard")) {
+                return 'G';
+            }
+        }
+
+        // Verificar si hay un objeto en la celda
+        if (cell.hasObject()) {
+            Item item = cell.getObject();
+
+            String itemType = item.getType();
+
+            switch (itemType) {
+                case "Card":
+                    return 'C';
+                case "C4":
+                    return 'X';
+                case "Door":
+                    return 'D';
+               
+                default:
+                    return ' ';
+            }
+        }
+        return ' ';
     }
     
     public boolean isValidPosition(Position position) {
@@ -175,4 +222,6 @@ public class Map {
         }
         return hasEnemyAt(snake.getPosition());
     }
+    
+    
 }

@@ -17,7 +17,6 @@ public class Game {
         initialize();
     }
     
-    // Inicialmente 0 misiones completadas
     private void initialize() {
         completedMisions = 0;  
         currentMission = 1;
@@ -31,26 +30,11 @@ public class Game {
     private void createMissions() {
         missions = new Mission[3];
         
-        // Objetivos Mision 1 - Hangar de entrada
-        String[] objectives1 = {
-            "Obtener la tarjeta de acceso.", 
-            "Llegar a la puerta del hangar."
-        };
- 
-        Map map1 = new Map(7, 7);
-        missions[0] = new IntermediateMission("Hangar de entrada.", 1, objectives1, map1);
+        missions[0] = new IntermediateMission("Hangar de entrada.", 1);
         
-        // Objetivos Misión 2 - Almacén de armas 
-        String[] objectives2 = {
-            "Recoger explosivos C4.",
-            "Abrir la puerta bloqueada."
-        };
-
-        Map map2 = new Map(9, 9);
-        missions[1] = new IntermediateMission("Almacén de armas.", 2, objectives2, map2);
+        missions[1] = new IntermediateMission("Almacén de armas.", 2);
         
-        // Misión 3 - Batalla Final
-        missions[2] = new FinalMission("Hangar de Metal Geear: Batalla final.");
+        missions[2] = new FinalMission("Hangar de Metal Gear: Batalla final.");
     }
     
     public void startGame() {

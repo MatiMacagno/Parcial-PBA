@@ -9,7 +9,7 @@ public class Snake extends Personage {
     private boolean hasC4;
     
     public Snake(String name, Position position) {
-        super(name, new Position(0, 0));
+        super(name="Snake", new Position(0, 0));
     }
 
     public boolean isHasCard() {
