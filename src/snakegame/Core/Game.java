@@ -2,6 +2,8 @@ package snakegame.Core;
 import snakegame.Missions.Mission;
 import snakegame.Missions.IntermediateMission;
 import snakegame.Missions.FinalMission;
+import snakegame.Entities.Snake;
+import snakegame.Model.Position;
 import java.util.Scanner;
 
 public class Game {
@@ -12,7 +14,8 @@ public class Game {
     private String progressCode;
     private boolean completedGame;
     private Scanner scanner;
-    
+    private Snake snake;
+
     public Game() {
         initialize();
     }
@@ -22,6 +25,7 @@ public class Game {
         currentMission = 1;
         completedGame = false;
         progressCode = "";
+        snake = new Snake("Snake", new Position(0,0));
         scanner = new Scanner(System.in);
         createMissions();
         missions[0].setMissionUnlocked();
@@ -30,9 +34,9 @@ public class Game {
     private void createMissions() {
         missions = new Mission[3];
         
-        missions[0] = new IntermediateMission("Hangar de entrada.", 1);
+        missions[0] = new IntermediateMission("Hangar de entrada.", 1, snake);
         
-        missions[1] = new IntermediateMission("Almacén de armas.", 2);
+        missions[1] = new IntermediateMission("Almacén de armas.", 2, snake);
         
         missions[2] = new FinalMission("Hangar de Metal Gear: Batalla final.");
     }

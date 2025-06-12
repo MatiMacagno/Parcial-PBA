@@ -11,7 +11,7 @@ public class IntermediateMission extends Mission {
     private String[] objectives;
     private boolean[] completedObjectives;
     private Map map;
-    
+    private Snake snake;
     
     public int getMissionNumber() {
         return missionNumber;
@@ -21,24 +21,10 @@ public class IntermediateMission extends Mission {
         this.missionNumber = missionNumber;
     }
 
-    public IntermediateMission(String name, int missionNumber) {
+    public IntermediateMission(String name, int missionNumber, Snake snake) {
         super(name);
         this.missionNumber = missionNumber;
-    }
-    
-    public IntermediateMission(String name, int missionNumber, String[] objectives) {
-        super(name);
-        this.missionNumber = missionNumber;
-        this.objectives = objectives;
-        this.completedObjectives = new boolean[objectives.length];
-    }
-    
-    public IntermediateMission(String name, int missionNumber, String[] objectives, Map map) {
-        super(name);
-        this.missionNumber = missionNumber;
-        this.objectives = objectives;
-        this.completedObjectives = new boolean[objectives.length];
-        this.map = map;
+        this.snake = snake;
     }
     
     public void completeObjective(int i) {
@@ -77,7 +63,6 @@ public class IntermediateMission extends Mission {
             map.putItem(card, new Position(3, 5));
             map.putItem(door, new Position(6, 6));
             
-            Snake snake = new Snake("Snake", new Position(0, 0));
             map.putPersonage(snake, snake.getPosition());
             
             Guard guard1 = new Guard("Guard", new Position(2, 2));
@@ -95,7 +80,6 @@ public class IntermediateMission extends Mission {
             map.putItem(c4, new Position(5, 7));
             map.putItem(door, new Position(0, 3));
             
-            Snake snake = new Snake("Snake", new Position(0, 0));
             map.putPersonage(snake, snake.getPosition());
             
             Guard guard1 = new Guard("Guard", new Position(3, 3));
